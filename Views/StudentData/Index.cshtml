@@ -1,0 +1,118 @@
+
+@model IEnumerable<StudentMIS.Models.StudentData>
+@{
+    ViewData["Title"]="Index";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - StudentMIS</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">StudentMIS</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="StudentData" asp-action="Logout">LogOut</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+
+            <h2>Admin Dashboard<h2>
+            <br>
+            <h3>Add Student</h3>
+
+
+            <div class="container ">
+
+                <form method="post">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="prn">PRN</label>
+                            <input type="text" class="form-control" name="prn" id="prn" style="width:50%" placeholder="Enter PRN">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="name">Enter Name</label>
+                            <input type="text" name="name" class="form-control" id="name" style="width:50%" placeholder="Enter Name">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="department">Enter Department</label>
+                            <input type="text" class="form-control" style="width:50%" name="department" id="department" placeholder="Enter Department">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="currentYear">Enter CurrentYear</label>
+                            <input type="text" class="form-control" id="currentYear" style="width:50%" name="currentYear" placeholder="Enter Current Year">
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" primary />
+                </form>
+            </div>
+
+            <br>
+            <br>
+
+            <h2>Student Details</h2>
+
+            <table class="table table-striped">
+            <thead>
+                <tr>
+                <th scope="col">PRN</th>
+                <th scope="col">Name</th>
+                <th scope="col">Department</th>
+                <th scope="col">Current Year</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model) {
+                <tr>
+                <th scope="row">  @Html.DisplayTextFor(modelItem => item.prn) </th>
+                    <td> @Html.DisplayTextFor(modelItem => item.name)</td>
+                    <td> @Html.DisplayTextFor(modelItem => item.department)</td>
+                    <td> @Html.DisplayTextFor(modelItem => item.currentYear)</td>
+                </tr>
+            }
+            </tbody>
+            </table>
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - StudentMIS - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>
