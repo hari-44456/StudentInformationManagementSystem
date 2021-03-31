@@ -50,5 +50,48 @@ namespace StudentMIS.Models {
 
             cmd.ExecuteNonQuery();
         }
+
+        public void DeleteStudent(string prn) {
+            MySqlConnection conn=GetConnection();
+            conn.Open();
+            MySqlCommand cmd=new MySqlCommand("delete from studentData where prn=@v1",conn);
+
+            cmd.Parameters.AddWithValue("@v1",prn);
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+        }
+
+        public StudentData GetStudentDetails(string prn) {
+            StudentData student=new StudentData();
+            MySqlConnection conn= GetConnection();
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("select * from studentData where prn=@v1",conn);
+            cmd.Parameters.AddWithValue("@v1",prn);
+
+            var reader=cmd.ExecuteReader();
+            if(reader.Read()) {
+                student.prn=reader["prn"].ToString();
+                student.name=reader["name"].ToString();
+                student.department=reader["department"].ToString();
+                student.currentYear=reader["currentYear"].ToString();
+            }
+            return student;
+        }
+
+        public void UpdateStudent(string prn,string name,string department,string currentYear) {
+             MySqlConnection conn=GetConnection();
+            conn.Open();
+            MySqlCommand cmd=new MySqlCommand("update studentdata set name=@v2,department=@v3,currentYear=@v4 where prn=@v1",conn);
+
+            cmd.Parameters.AddWithValue("@v1",prn);
+            cmd.Parameters.AddWithValue("@v2",name);
+            cmd.Parameters.AddWithValue("@v3",department);
+            cmd.Parameters.AddWithValue("@v4",currentYear);
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+        }
     }
 }

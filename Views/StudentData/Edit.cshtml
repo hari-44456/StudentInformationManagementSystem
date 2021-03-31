@@ -34,83 +34,45 @@
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+             <div class="container ">
+            <h3>Edit Student Details</h3>
 
-            <h2>Admin Dashboard<h2>
-            <br>
-            <h3>Add Student</h3>
-
-
-            <div class="container ">
+           
 
                 <form method="post">
                 <div class="row">
-                    <div class="col">
-                        <div class="form-group">
+                    <div class="col-sm-12 col-md-6" >
+                        <div class="form-group" style="padding-left:5px;">
                             <label for="prn">PRN</label>
-                            <input type="text" class="form-control" name="prn" id="prn" style="width:50%" placeholder="Enter PRN">
+                            <input type="text" class="form-control" name="prn" readOnly  id="prn" style="width:40%" placeholder="Enter PRN" value="@ViewData["prn"]" >  
                         </div>
-                    </div>
-                    <div class="col">
+                    <div class="col-sm-12 col-md-6">
                         <div class="form-group">
                             <label for="name">Enter Name</label>
-                            <input type="text" name="name" class="form-control" id="name" style="width:50%" placeholder="Enter Name">
+                            <input type="text" name="name" class="form-control" id="name" style="width:80%" placeholder="Enter Name" value="@ViewData["name"]" >
                         </div>
                     </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col">
+               
+                    <div class="col-sm-12 col-md-6">
                         <div class="form-group">
                             <label for="department">Enter Department</label>
-                            <input type="text" class="form-control" style="width:50%" name="department" id="department" placeholder="Enter Department">
+                            <input type="text" class="form-control" style="width:80%" name="department" id="department" placeholder="Enter Department" value="@ViewData["department"]" >
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-sm-12 col-md-6">
                         <div class="form-group">
                             <label for="currentYear">Enter CurrentYear</label>
-                            <input type="text" class="form-control" id="currentYear" style="width:50%" name="currentYear" placeholder="Enter Current Year">
+                            <input type="text" class="form-control" id="currentYear" style="width:80%" name="currentYear" placeholder="Enter Current Year" value="@ViewData["currentYear"]" >
                         </div>
                     </div>
+                     <input type="submit" class="btn btn-primary" value="Edit" primary />
                 </div>
-                <input type="submit" value="Add Student" class="btn btn-primary" primary />
+               
                 </form>
             </div>
 
-            <br>
-            <br>
 
-            <h2>Student Details</h2>
-
-            <table class="table table-striped">
-            <thead>
-                <tr>
-                <th scope="col">PRN</th>
-                <th scope="col">Name</th>
-                <th scope="col">Department</th>
-                <th scope="col">Current Year</th>
-                <th scope="col">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-            @foreach (var item in Model) {
-                <tr>
-                <th scope="row">  @Html.DisplayTextFor(modelItem => item.prn) </th>
-                    <td> @Html.DisplayTextFor(modelItem => item.name)</td>
-                    <td> @Html.DisplayTextFor(modelItem => item.department)</td>
-                    <td> @Html.DisplayTextFor(modelItem => item.currentYear)</td>
-                    <td>    
-                        <!-- <a asp-controller = "StudentData" asp-action = "Edit" >Edit</a>  -->
-                        <a href="https:\/\/localhost:5001/StudentData/Edit?prn=@item.prn">Edit</a>
-                        <a href="https:\/\/localhost:5001/StudentData/HandleDelete?prn=@item.prn">Delete</a>
-                    </td>
-                </tr>
-            }
-            </tbody>
-            </table>
-        </main>
-    </div>
+            
 
     <footer class="border-top footer text-muted">
         <div class="container">
