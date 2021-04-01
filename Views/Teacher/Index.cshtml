@@ -100,7 +100,7 @@
                 </div>
             </div>
         </div>
-        <input type="submit" btn  btn-primary />
+        <input type="submit" class="btn  btn-primary" value="Add Course" />
         </form>
     </div>
     <br><br>
@@ -127,8 +127,8 @@
                     <td> @Html.DisplayTextFor(modelItem => item.credits)</td>
                      <td>    
                         <!-- using(string username=(string)ViewData["username"]){ -->
-                        <a asp-controller="Teacher" asp-action="HandleDelete" asp-route-courseId="@item.courseId" asp-route-username="@username">Delete</a>
                         <a asp-controller="Teacher" asp-action="Edit" asp-route-courseId="@item.courseId" asp-route-username="@username">Edit</a>
+                        <a asp-controller="Teacher" asp-action="HandleDelete" asp-route-courseId="@item.courseId" asp-route-username="@username">Delete</a>
                     
                         <!-- } -->
                      </td>
