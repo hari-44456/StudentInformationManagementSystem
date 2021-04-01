@@ -1,0 +1,84 @@
+
+@model IEnumerable<StudentMIS.Models.Course>
+@{
+    ViewData["Title"]="Index";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - StudentMIS</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">StudentMIS</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="StudentData" asp-action="Logout">LogOut</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+             <div class="container ">
+            <h3>Edit Course Details</h3>
+
+                <form method="post">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6" >
+                        <div class="form-group" style="padding-left:5px;">
+                            <label for="prn">Course Id</label>
+                            <input type="text" class="form-control" name="courseId" readOnly  id="prn" style="width:40%" placeholder="Enter PRN" value="@ViewData["courseId"]" >  
+                        </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="form-group">
+                            <label for="name">Enter Title</label>
+                            <input type="text" name="title" class="form-control" id="name" style="width:80%" placeholder="Enter Course Name" value="@ViewData["CourseTitle"]" >
+                        </div>
+                    </div>
+               
+                    <div class="col-sm-12 col-md-6">
+                        <div class="form-group">
+                            <label for="department">Enter Department</label>
+                            <input type="text" class="form-control" style="width:80%" name="department" id="department" placeholder="Enter Department" value="@ViewData["department"]" >
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="form-group">
+                            <label for="currentYear">Enter Credits</label>
+                            <input type="text" class="form-control" id="currentYear" style="width:80%" name="credits" placeholder="Enter credits" value="@ViewData["credits"]" >
+                        </div>
+                    </div>
+                     <input type="submit" class="btn btn-primary" value="Edit" primary />
+                </div>
+               
+                </form>
+            </div>
+
+
+            
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - StudentMIS - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>

@@ -37,8 +37,7 @@ namespace StudentMIS.Models {
             return stu;
         }
 
-        public List<Course> GetCourses()
-        {
+        public List<Course> GetCourses() {
             List<Course> list=new List<Course>();
             MySqlConnection con=GetConnection();
             con.Open();
@@ -58,8 +57,7 @@ namespace StudentMIS.Models {
             return list;    
         }
 
-        public void AddCourse(int courseId,string title,string department,int credits)
-        {
+        public void AddCourse(int courseId,string title,string department,int credits) {
             MySqlConnection con=GetConnection();
             con.Open();
 
@@ -72,6 +70,58 @@ namespace StudentMIS.Models {
             cmd.Parameters.AddWithValue("@v4",credits);
 
             cmd.ExecuteNonQuery();
+        }
+
+        public Course GetCourseDetails(int courseId) {
+            Course c=new Course();
+            MySqlConnection con=GetConnection();
+            con.Open();
+
+
+            string query="select * from course where courseID=@v1";
+            MySqlCommand cmd=new MySqlCommand(query,con);
+
+            cmd.Parameters.AddWithValue("@v1",courseId);
+            cmd.Prepare();
+
+            var reader= cmd.ExecuteReader();
+            if(reader.Read()) {
+                 c.courseId=reader.GetInt32(0);
+                c.title=reader.GetString(1);
+                c.department=reader.GetString(2);
+                c.credits=reader.GetInt32(3);
+            }
+            return c;
+        }
+
+        public void UpdateCourse(int courseId,string title,string department,int credits) {
+            MySqlConnection con=GetConnection();
+            con.Open();
+
+             string query="update course set title=@v1,department=@v2,credits=@v3 where courseId=@v4";
+            MySqlCommand cmd=new MySqlCommand(query,con);
+
+            cmd.Parameters.AddWithValue("@v1",title);
+            cmd.Parameters.AddWithValue("@v2",department);
+            cmd.Parameters.AddWithValue("@v3",credits);
+            cmd.Parameters.AddWithValue("@v4",courseId);
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+        }
+
+        public void DeleteCourse(int courseId) {
+            MySqlConnection con=GetConnection();
+            con.Open();
+
+
+            string query="delete from course where courseID=@v1";
+            MySqlCommand cmd=new MySqlCommand(query,con);
+
+            cmd.Parameters.AddWithValue("@v1",courseId);
+            cmd.Prepare();
+
+           cmd.ExecuteNonQuery();
         }
     }
 }

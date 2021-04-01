@@ -2,6 +2,11 @@
 @{
     ViewData["Title"]="Index";
 }
+@{
+        string username=(string)ViewData["username"];
+
+}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,11 +58,9 @@
                 <tr>
                 <th scope="row">  @Html.DisplayTextFor(modelItem =>ViewData["username"]) </th>
                     <td> @Html.DisplayTextFor(modelItem => ViewData["id"])</td>
-                    <!-- <td> @Html.DisplayTextFor(modelItem => ViewData["courseId"])</td> -->
                     <td> @Html.DisplayTextFor(modelItem => ViewData["semester"])</td>
                     <td> @Html.DisplayTextFor(modelItem => ViewData["year"])</td>
                 </tr>
-            
             </tbody>
             </table>
         </main>
@@ -110,15 +113,25 @@
                 <th scope="col">Course Title</th>
                 <th scope="col">Department</th>
                 <th scope="col">Credits</th>
+                <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
             @foreach (var item in Model) {
+                string username=(string)ViewData["username"];
                 <tr>
+               
                 <th scope="row">  @Html.DisplayTextFor(modelItem => item.courseId) </th>
                     <td> @Html.DisplayTextFor(modelItem => item.title)</td>
                     <td> @Html.DisplayTextFor(modelItem => item.department)</td>
                     <td> @Html.DisplayTextFor(modelItem => item.credits)</td>
+                     <td>    
+                        <!-- using(string username=(string)ViewData["username"]){ -->
+                        <a asp-controller="Teacher" asp-action="HandleDelete" asp-route-courseId="@item.courseId" asp-route-username="@username">Delete</a>
+                        <a asp-controller="Teacher" asp-action="Edit" asp-route-courseId="@item.courseId" asp-route-username="@username">Edit</a>
+                    
+                        <!-- } -->
+                     </td>
                 </tr>
             }
             </tbody>
@@ -136,3 +149,4 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
 </body>
 </html>
+

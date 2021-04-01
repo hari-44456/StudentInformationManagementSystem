@@ -118,3 +118,4 @@ G:\ADSL PRACTICALS\Practical3_StudentMIS\obj\Debug\net5.0\StudentMIS.pdb
 G:\ADSL PRACTICALS\Practical3_StudentMIS\obj\Debug\net5.0\StudentMIS.genruntimeconfig.cache
 G:\ADSL PRACTICALS\Practical3_StudentMIS\obj\Debug\net5.0\Razor\Views\Hello\Index.cshtml.g.cs
 G:\ADSL PRACTICALS\Practical3_StudentMIS\obj\Debug\net5.0\Razor\Views\StudentData\Edit.cshtml.g.cs
+G:\ADSL PRACTICALS\Practical3_StudentMIS\obj\Debug\net5.0\Razor\Views\Teacher\Edit.cshtml.g.cs
